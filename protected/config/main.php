@@ -8,7 +8,7 @@ Yii::setPathOfAlias('bootstrap', dirname(__FILE__).'/../extensions/YiiBooster');
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'三国管理后台',
-
+    'language'=>'zh_cn',
 	'preload'=>array('log', 'booster'),
 
 	'import'=>array(

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <title><?php echo CHtml::encode($this->pageTitle); ?></title>
-    <link rel="stylesheet" href="/css/site.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
 </head>
 
 <body>
@@ -42,18 +42,49 @@ $this->widget(
 );
 ?>
 
+<div style="height: 40px"></div>
 
-<div style="height: 80px"></div>
+<div class="row-fluid">
+    <div class="col-md-2">
+    <?php
+    $this->widget(
+        'booster.widgets.TbMenu',
+        array(
+            'type' => 'list',
+            'items' => array(
+                array(
+                    'label' => '激活码操作',
+                    'itemOptions' => array('class' => 'nav-header')
+                ),
+                array('label' => '激活码创建', 'url' => '/activation/index','itemOptions' => array('class' => 'active') ),
+                array('label' => '激活码列表', 'url' => '/activation/list'),
+                array('label' => '激活码接口', 'url' => '/activation/check'),
+                '',
+                array('label' => 'Help', 'url' => '#'),
+            )
+        )
+    );
+    ?>
+    </div>
 
-	<?php echo $content; ?>
+    <div class="col-md-10">
+        <?php echo $content; ?>
+    </div>
+</div>
 
+
+
+
+<div class="row-fluid">
+    <div class="col-md-12">
 	<div class="container" id="footer">
         <br/>
         <p></p>
 		Copyright &copy; <?php echo date('Y'); ?> by Harry.<br/>
 		联系：QQ 730107711
-	</div><!-- footer -->
-
+	</div>
+    </div>
+</div>
 
 </body>
 </html>
