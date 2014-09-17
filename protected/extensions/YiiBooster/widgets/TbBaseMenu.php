@@ -202,6 +202,13 @@ abstract class TbBaseMenu extends CMenu {
 					$item['header'] = true;
 					$classes[] = 'nav-header';
 				}
+                /*
+                 * 修复于 'type' => 'list' 模式
+                 * 没有 自动获取 active
+                 */
+                if( isset($item['url']) && !is_array($item['url']) && strpos($item['url'],$route) !== false ) {
+                    $classes[] = 'active';
+                }
 
 				if (!empty($classes)) {
 					$classes = implode($classes, ' ');
@@ -215,7 +222,6 @@ abstract class TbBaseMenu extends CMenu {
 
 			$items[$i] = $item;
 		}
-
 		return parent::normalizeItems($items, $route, $active);
 	}
 }

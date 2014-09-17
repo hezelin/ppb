@@ -47,6 +47,7 @@ $this->widget(
 <div class="row-fluid">
     <div class="col-md-2">
     <?php
+
     $this->widget(
         'booster.widgets.TbMenu',
         array(
@@ -56,7 +57,7 @@ $this->widget(
                     'label' => '激活码操作',
                     'itemOptions' => array('class' => 'nav-header')
                 ),
-                array('label' => '激活码创建', 'url' => '/activation/index','itemOptions' => array('class' => 'active') ),
+                array('label' => '激活码创建', 'url' => '/activation/index'),
                 array('label' => '激活码列表', 'url' => '/activation/list'),
                 array('label' => '激活码接口', 'url' => '/activation/check'),
                 '',
@@ -64,7 +65,16 @@ $this->widget(
             )
         )
     );
+//    ,'itemOptions' => array('class' => 'active')
     ?>
+        <!--<div class="list-group">
+            <a href="/activation/index" class="list-group-item active">激活码创建</a>
+            <a href="/activation/list" class="list-group-item">激活码列表</a>
+            <a href="/activation/check" class="list-group-item">激活码接口</a>
+            <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+            <a href="#" class="list-group-item">Vestibulum at eros</a>
+        </div>-->
+
     </div>
 
     <div class="col-md-10">
