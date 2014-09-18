@@ -202,8 +202,8 @@ background: linear-gradient(45deg, #2C2C2C 0%, #494544 100%) repeat scroll 0 0 r
 }
 .subhead p {
 	font-size: 24px;
-	font-weight 300;
-	line-height 30px;
+	font-weight: 300;
+	line-height: 30px;
     margin-bottom: 20px;
 }
 .subhead .navbar {
@@ -762,7 +762,7 @@ form.bs-docs-example {
 }
 .bs-docs-sidenav .active .icon-chevron-right,
 .bs-docs-sidenav .active a:hover .icon-chevron-right {
-    background-image: url(../images/glyphicons-halflings-white.png);
+    background-image: url(images/glyphicons-halflings-white.png);
     opacity: 1;
 }
 .bs-docs-sidenav.affix {
@@ -972,14 +972,7 @@ thead {
     width: 466px;
     height: 58px
 }
-.sponsors-banner.phpstorm {
-    background: #5854b5 url(../images/phpstorm468x60_violet.gif) no-repeat 10px 50%;
-    border: solid 1px #5854b5;
-}
-.sponsors-banner.navicat {
-    background: white url(../images/navicat_banner.png) 0px 0px;
-    border: solid 1px white;
-}
+
 .sponsors-banner .headline {
     margin: 3px 0 0 65px;
     padding: 0;
@@ -1018,4 +1011,11 @@ thead {
 .nav-list > .active > a, .nav-list > .active > a:hover, .nav-list > .active > a:focus {
 	background-color: #0088CC;
     color: #FFFFFF;
+}
+/********************  自定义  *****************/
+.nav-list > li > a{
+    padding: 5px 15px;
+}
+.nav-list .nav-header{
+    font-size: 16px;
 }

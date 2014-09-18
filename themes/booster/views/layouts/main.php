@@ -42,7 +42,7 @@ $this->widget(
 );
 ?>
 
-<div style="height: 40px"></div>
+<div style="height: 50px"></div>
 
 <div class="row-fluid">
     <div class="col-md-2">
@@ -53,25 +53,27 @@ $this->widget(
         array(
             'type' => 'list',
             'items' => array(
-                array(
-                    'label' => '激活码操作',
-                    'itemOptions' => array('class' => 'nav-header')
-                ),
+                array('label' => '激活码操作'),
                 array('label' => '激活码创建', 'url' => '/activation/index'),
                 array('label' => '激活码列表', 'url' => '/activation/list'),
                 array('label' => '激活码接口', 'url' => '/activation/port'),
                 '',
-                array(
-                    'label' => '平台操作',
-                    'itemOptions' => array('class' => 'nav-header')
-                ),
+                array('label' => '平台操作'),
                 array('label' => '添加平台', 'url' => '/platform/index'),
                 array('label' => '平台列表', 'url' => '/platform/list'),
+                '',
+                array('label' => '充值与消费'),
+                array('label' => '对账管理', 'url' => '/pay/index'),
+                array('label' => '充值消费排行', 'url' => '/pay/ranking'),
+                array('label' => '充值情况总览', 'url' => '/pay/status'),
+                array('label' => 'LTV', 'url' => '/pay/ltv'),
+                array('label' => '每月充值统计', 'url' => '/pay/statistics'),
+                array('label' => '等级充值情况', 'url' => '/pay/lvStatus'),
+                array('label' => '充值补单系统', 'url' => '/pay/addOrder'),
                 '',
             )
         )
     );
-//    ,'itemOptions' => array('class' => 'active')
     ?>
         <!--<div class="list-group">
             <a href="/activation/index" class="list-group-item active">激活码创建</a>

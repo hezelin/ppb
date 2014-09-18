@@ -7,7 +7,7 @@ Yii::setPathOfAlias('bootstrap', dirname(__FILE__).'/../extensions/YiiBooster');
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'三国管理后台',
+	'name'=>'泡泡兵管理后台',
     'language'=>'zh_cn',
 	'preload'=>array('log', 'booster'),
 
@@ -49,7 +49,7 @@ return array(
         ),
 
         'db'=>array(
-            'connectionString' => 'mysql:host=localhost;dbname=sanguo_base',
+            'connectionString' => 'mysql:host=localhost;dbname=ppb_base',
             'emulatePrepare' => true,
             'username' => 'root',
             'password' => 'guoan2',
