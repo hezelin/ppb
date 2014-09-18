@@ -90,6 +90,14 @@ class ActivationController extends Controller
         $this->render('view',array('model'=>$model));
     }
 
+    /*
+     * 接口的说明
+     */
+    public function actionPort()
+    {
+        $this->render('port');
+    }
+
 	public function actionIndex()
 	{
         if(isset($_POST['TblActivationTotal']))
@@ -114,10 +122,10 @@ class ActivationController extends Controller
             if($model->save()){
 //                生成验证码
                 $this->createActivation( $model->id,$start,$_POST['TblActivationTotal']['total'] );
-//                $this->redirect(array('list'));
-                $model->refresh();
-//                Yii::app()->end();
-            }
+                echo json_encode( array('status'=>1,'msg'=>'创建激活码成功') );
+            }else echo json_encode( array('status'=>0,'error'=>'出现未知错误。') );
+
+            Yii::app()->end();
         }
 
         $model = new TblActivationTotal();

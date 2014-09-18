@@ -59,9 +59,15 @@ $this->widget(
                 ),
                 array('label' => '激活码创建', 'url' => '/activation/index'),
                 array('label' => '激活码列表', 'url' => '/activation/list'),
-                array('label' => '激活码接口', 'url' => '/activation/check'),
+                array('label' => '激活码接口', 'url' => '/activation/port'),
                 '',
-                array('label' => 'Help', 'url' => '#'),
+                array(
+                    'label' => '平台操作',
+                    'itemOptions' => array('class' => 'nav-header')
+                ),
+                array('label' => '添加平台', 'url' => '/platform/index'),
+                array('label' => '平台列表', 'url' => '/platform/list'),
+                '',
             )
         )
     );
