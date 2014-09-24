@@ -56,6 +56,13 @@ return array(
             'charset' => 'utf8',
         ),
 
+        'db2'=> require(__DIR__.'/platformDbConfig.php'),
+
+        'authManager'=>array(
+            'class'=>'CDbAuthManager',
+            'connectionID'=>'db',
+        ),
+
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
 			'errorAction'=>'site/error',
