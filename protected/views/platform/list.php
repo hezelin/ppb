@@ -25,7 +25,7 @@ $gridColumns = array(
         )
     ),
     array(
-        'name'=>'plat_url',
+        'name'=>'server_id',
         'class' => 'booster.widgets.TbEditableColumn',
         'headerHtmlOptions' => array('style' => 'width:200px'),
         'editable' => array(
@@ -35,7 +35,7 @@ $gridColumns = array(
         )
     ),
     array(
-        'name'=>'plat_server',
+        'name'=>'server_name',
         'class' => 'booster.widgets.TbEditableColumn',
         'headerHtmlOptions' => array('style' => 'width:200px'),
         'editable' => array(
