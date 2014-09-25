@@ -42,7 +42,7 @@ $this->widget(
 );
 ?>
 
-<div style="height: 40px"></div>
+<div style="height: 50px"></div>
 
 <div class="row-fluid">
     <div class="col-md-2">
@@ -53,25 +53,63 @@ $this->widget(
         array(
             'type' => 'list',
             'items' => array(
-                array(
-                    'label' => '激活码操作',
-                    'itemOptions' => array('class' => 'nav-header')
-                ),
+                array('label' => '激活码操作'),
                 array('label' => '激活码创建', 'url' => '/activation/index'),
                 array('label' => '激活码列表', 'url' => '/activation/list'),
                 array('label' => '激活码接口', 'url' => '/activation/port'),
                 '',
-                array(
-                    'label' => '平台操作',
-                    'itemOptions' => array('class' => 'nav-header')
-                ),
-                array('label' => '添加平台', 'url' => '/platform/index'),
-                array('label' => '平台列表', 'url' => '/platform/list'),
+                array('label' => '服务器操作'),
+                array('label' => '添加服务器', 'url' => '/platform/index'),
+                array('label' => '服务器列表', 'url' => '/platform/list'),
                 '',
+                array('label' => '充值与消费'),
+                array('label' => '对账管理', 'url' => '/pay/index'),
+                array('label' => '充值消费排行', 'url' => '/pay/ranking'),
+                array('label' => '充值情况总览', 'url' => '/pay/status'),
+                array('label' => 'LTV', 'url' => '/pay/ltv'),
+                array('label' => '每月充值统计', 'url' => '/pay/statistics'),
+                array('label' => '等级充值情况', 'url' => '/pay/lvStatus'),
+                array('label' => '充值补单系统', 'url' => '/pay/addOrder'),
+                '',
+                array('label' => '数据分析'),
+                array('label' => '玩家在线数据', 'url' => '/analysis/online'),
+                array('label' => '分时注册统计', 'url' => '/analysis/timeRegister'),
+                array('label' => 'VIP管理', 'url' => '/analysis/vip'),
+                array('label' => '用户留存', 'url' => '/analysis/userRemain'),
+                array('label' => '等级留存', 'url' => '/analysis/lvRemain'),
+                array('label' => '流失分析', 'url' => '/analysis/runAway'),
+                array('label' => '消费统计', 'url' => '/analysis/consume'),
+                array('label' => '玩家情况总览', 'url' => '/analysis/index'),
+                array('label' => '商城消耗统计', 'url' => '/analysis/shop'),
+                '',
+                array('label' => '玩家信息查询'),
+                array('label' => '玩家详细信息', 'url' => '/player/info'),
+                array('label' => '玩家邮件查询', 'url' => '/player/mail'),
+                array('label' => '玩家关系查询', 'url' => '/player/relation'),
+                array('label' => '物品流通查询', 'url' => '/player/good'),
+                '',
+                array('label' => '玩家信息修改'),
+                array('label' => '玩家传送', 'url' => '/playerEditor/transfer'),
+                array('label' => '设置GM', 'url' => '/playerEditor/setGM'),
+                array('label' => '玩家任务管理', 'url' => '/playerEditor/task'),
+                array('label' => '封禁账号、IP、禁言', 'url' => '/playerEditor/forbid'),
+                array('label' => '物品发放', 'url' => '/playerEditor/issueGood'),
+                array('label' => '全服补偿', 'url' => '/playerEditor/compensate'),
+                array('label' => '玩家物品删除', 'url' => '/playerEditor/delGood'),
+                array('label' => '玩家邮件删除', 'url' => '/playerEditor/delMail'),
+                array('label' => '宠物解锁', 'url' => '/playerEditor/petRelieve'),
+                array('label' => '玩家基础信息修改', 'url' => '/playerEditor/infoAlter'),
+                '',
+                array('label' => '公告管理'),
+                array('label' => '弹出公告', 'url' => '/notice/index'),
+                array('label' => '发送系统邮件', 'url' => '/notice/mail'),
+                array('label' => '轮播公告', 'url' => '/notice/position'),
+                '',
+
+//          index mail position
             )
         )
     );
-//    ,'itemOptions' => array('class' => 'active')
     ?>
         <!--<div class="list-group">
             <a href="/activation/index" class="list-group-item active">激活码创建</a>

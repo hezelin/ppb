@@ -8,6 +8,7 @@
  * @property string $plat_name
  * @property string $plat_url
  * @property string $plat_server
+ * @property string $belong_plat
  * @property string $mysql_dbname
  * @property string $mysql_account
  * @property string $mysql_password
@@ -34,11 +35,12 @@ class TblPlatform extends CActiveRecord
 		return array(
 			array('plat_name, plat_url, plat_server, mysql_dbname, mysql_account, mysql_password, mysql_ip, create_time', 'required'),
 			array('plat_name, plat_url, plat_server', 'length', 'max'=>100),
+			array('belong_plat', 'length', 'max'=>7),
 			array('mysql_dbname, mysql_account, mysql_password, mysql_ip', 'length', 'max'=>50),
 			array('create_time', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, plat_name, plat_url, plat_server, mysql_dbname, mysql_account, mysql_password, mysql_ip, create_time', 'safe', 'on'=>'search'),
+			array('id, plat_name, plat_url, plat_server, belong_plat, mysql_dbname, mysql_account, mysql_password, mysql_ip, create_time', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -60,9 +62,10 @@ class TblPlatform extends CActiveRecord
 	{
 		return array(
 			'id' => '自增id',
-			'plat_name' => '平台名称',
-			'plat_url' => '平台地址',
-			'plat_server' => '平台服务器',
+			'plat_name' => '渠道名称',
+			'plat_url' => '服务器地址',
+			'plat_server' => '服务器名称',
+			'belong_plat' => '所属平台',
 			'mysql_dbname' => '数据库名称',
 			'mysql_account' => '数据库账号',
 			'mysql_password' => '数据库密码',
@@ -93,6 +96,7 @@ class TblPlatform extends CActiveRecord
 		$criteria->compare('plat_name',$this->plat_name,true);
 		$criteria->compare('plat_url',$this->plat_url,true);
 		$criteria->compare('plat_server',$this->plat_server,true);
+		$criteria->compare('belong_plat',$this->belong_plat,true);
 		$criteria->compare('mysql_dbname',$this->mysql_dbname,true);
 		$criteria->compare('mysql_account',$this->mysql_account,true);
 		$criteria->compare('mysql_password',$this->mysql_password,true);
