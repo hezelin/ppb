@@ -41,9 +41,15 @@ $form = $this->beginWidget(
     )
 );
 
+echo $form->dropDownListGroup($model, 'belong_plat',array(
+    'widgetOptions' => array(
+        'data' => array('ios'=>'ios', 'android'=>'android'),
+        'htmlOptions' => array(),
+    )
+));
 echo $form->textFieldGroup($model, 'plat_name');
-echo $form->textFieldGroup($model, 'plat_url');
-echo $form->textFieldGroup($model, 'plat_server');
+echo $form->textFieldGroup($model, 'server_id');
+echo $form->textFieldGroup($model, 'server_name');
 echo $form->textFieldGroup($model, 'mysql_ip');
 echo $form->textFieldGroup($model, 'mysql_account');
 echo $form->textFieldGroup($model, 'mysql_password');

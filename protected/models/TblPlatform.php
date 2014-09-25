@@ -6,8 +6,9 @@
  * The followings are the available columns in table 'tbl_platform':
  * @property string $id
  * @property string $plat_name
- * @property string $plat_url
- * @property string $plat_server
+ * @property string $server_id
+ * @property string $server_name
+ * @property string $belong_plat
  * @property string $mysql_dbname
  * @property string $mysql_account
  * @property string $mysql_password
@@ -32,13 +33,14 @@ class TblPlatform extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('plat_name, plat_url, plat_server, mysql_dbname, mysql_account, mysql_password, mysql_ip, create_time', 'required'),
-			array('plat_name, plat_url, plat_server', 'length', 'max'=>100),
+			array('plat_name, server_id, server_name, mysql_dbname, mysql_account, mysql_password, mysql_ip, create_time', 'required'),
+			array('plat_name, server_name', 'length', 'max'=>100),
+			array('server_id, create_time', 'length', 'max'=>10),
+			array('belong_plat', 'length', 'max'=>7),
 			array('mysql_dbname, mysql_account, mysql_password, mysql_ip', 'length', 'max'=>50),
-			array('create_time', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, plat_name, plat_url, plat_server, mysql_dbname, mysql_account, mysql_password, mysql_ip, create_time', 'safe', 'on'=>'search'),
+			array('id, plat_name, server_id, server_name, belong_plat, mysql_dbname, mysql_account, mysql_password, mysql_ip, create_time', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -60,9 +62,10 @@ class TblPlatform extends CActiveRecord
 	{
 		return array(
 			'id' => '自增id',
-			'plat_name' => '平台名称',
-			'plat_url' => '平台地址',
-			'plat_server' => '平台服务器',
+			'plat_name' => '渠道名称',
+			'server_id' => '服务器id',
+			'server_name' => '服务器名称',
+			'belong_plat' => '所属平台',
 			'mysql_dbname' => '数据库名称',
 			'mysql_account' => '数据库账号',
 			'mysql_password' => '数据库密码',
@@ -91,8 +94,9 @@ class TblPlatform extends CActiveRecord
 
 		$criteria->compare('id',$this->id,true);
 		$criteria->compare('plat_name',$this->plat_name,true);
-		$criteria->compare('plat_url',$this->plat_url,true);
-		$criteria->compare('plat_server',$this->plat_server,true);
+		$criteria->compare('server_id',$this->server_id,true);
+		$criteria->compare('server_name',$this->server_name,true);
+		$criteria->compare('belong_plat',$this->belong_plat,true);
 		$criteria->compare('mysql_dbname',$this->mysql_dbname,true);
 		$criteria->compare('mysql_account',$this->mysql_account,true);
 		$criteria->compare('mysql_password',$this->mysql_password,true);
