@@ -1,14 +1,10 @@
-<?php
-/* @var $this PayController */
+<h3>☆充值消费排行</h3>
+<pre>
+   可以导出数据
+可选择平台：iOS或安卓
+可选择各渠道，如：91、360、小米、UC、PP、iTools 等
+可排序（按首次充值时间，首次消费时间，最后充值时间，最后消费时间，战力，等级，充值金额，消费金额，未登录天数）
+可筛选（按开始日期-结束日期做区间，可选择充值或消费，输入任意两个数字做区间）
+（排名，账号，角色ID，角色名，等级，战力，充值次数，充值金额，消费金额，元宝存量，银两存量，首次充值时间，最后充值时间，占总充值比率，首次消费时间，最后消费时间，注册时间，最后登录时间，报警）
 
-$this->breadcrumbs=array(
-	'Pay'=>array('/pay'),
-	'Ranking',
-);
-?>
-<h1><?php echo $this->id . '/' . $this->action->id; ?></h1>
-
-<p>
-	You may change the content of this page by modifying
-	the file <tt><?php echo __FILE__; ?></tt>.
-</p>
+</pre>
