@@ -2,6 +2,19 @@
 $gridColumns = array(
     'id',
     array(
+        'name'=>'belong_plat',
+        'class' => 'booster.widgets.TbEditableColumn',
+        'headerHtmlOptions' => array('style' => 'width:200px'),
+        'editable' => array(
+            'type' => 'select',
+            'title'=> '输入新名称',
+            'url' => '/platform/editable',
+            'source'=> array(
+                'ios'=>'ios','android'=>'android'
+            )
+        )
+    ),
+    array(
         'name'=>'plat_name',
         'class' => 'booster.widgets.TbEditableColumn',
         'headerHtmlOptions' => array('style' => 'width:200px'),
