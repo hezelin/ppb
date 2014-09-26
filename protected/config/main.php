@@ -2,7 +2,7 @@
 
 // uncomment the following to define a path alias
 // Yii::setPathOfAlias('local','path/to/local-folder');
-Yii::setPathOfAlias('bootstrap', dirname(__FILE__).'/../extensions/YiiBooster');
+Yii::setPathOfAlias('bootstrap3', dirname(__FILE__).'/../extensions/YiiBooster');
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
 return array(
@@ -24,6 +24,14 @@ return array(
 			// If removed, Gii defaults to localhost only. Edit carefully to taste.
 			'ipFilters'=>array('127.0.0.1','::1'),
 		),
+        'auth' => array(
+            'strictMode' => true, // when enabled authorization items cannot be assigned children of the same type.
+            'userClass' => 'TblUser', // the name of the user model class.
+            'userIdColumn' => 'uid', // the name of the user id column.
+            'userNameColumn' => 'name', // the name of the user name column.
+            'defaultLayout' => 'webroot.themes.booster.views.layouts.main', // the layout used by the module.
+            'viewDir' => null, // the path to view files to use with this module.
+        ),
 	),
 
 	'theme'=>'booster',
@@ -31,6 +39,9 @@ return array(
 		'user'=>array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
+            'class' => 'auth.components.AuthWebUser',
+//            'loginUrl' => array('/user/login'),
+            'admins' => array('admin', 'foo', 'bar'), // users with full access
 		),
 		// uncomment the following to enable URLs in path-format
 
@@ -45,7 +56,7 @@ return array(
 		),
 
         'booster'=>array(
-            'class'=>'bootstrap.components.Booster',
+            'class'=>'bootstrap3.components.Booster',
         ),
 
         'db'=>array(
@@ -61,6 +72,11 @@ return array(
         'authManager'=>array(
             'class'=>'CDbAuthManager',
             'connectionID'=>'db',
+            'behaviors' => array(
+                'auth' => array(
+                    'class' => 'auth.components.AuthBehavior',
+                ),
+            ),
         ),
 
 		'errorHandler'=>array(
