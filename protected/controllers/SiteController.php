@@ -37,6 +37,8 @@ class SiteController extends Controller
 	 */
 	public function actionError()
 	{
+        $this->layout = '/layouts/clean';
+
 		if($error=Yii::app()->errorHandler->error)
 		{
 			if(Yii::app()->request->isAjaxRequest)
@@ -44,7 +46,9 @@ class SiteController extends Controller
 			else
 				$this->render('error', $error);
 		}
-	}
+        $this->render('error', array('code'=>404,'message'=>'错误'));
+
+    }
 
 	/**
 	 * Displays the contact page

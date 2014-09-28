@@ -40,7 +40,7 @@ return array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
             'class' => 'auth.components.AuthWebUser',
-//            'loginUrl' => array('/user/login'),
+            'loginUrl' => array('/user/login'),
             'admins' => array('admin', 'foo', 'bar'), // users with full access
 		),
 		// uncomment the following to enable URLs in path-format
