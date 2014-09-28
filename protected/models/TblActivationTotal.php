@@ -30,6 +30,7 @@ class TblActivationTotal extends CActiveRecord
 			array('id, total, create_time', 'required'),
 			array('id', 'length', 'max'=>2),
 			array('total, create_time', 'length', 'max'=>10),
+            array('total','numerical'),
 			array('tips', 'length', 'max'=>30),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
