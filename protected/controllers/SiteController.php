@@ -46,8 +46,6 @@ class SiteController extends Controller
 			else
 				$this->render('error', $error);
 		}
-        $this->render('error', array('code'=>404,'message'=>'错误'));
-
     }
 
 	/**

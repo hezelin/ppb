@@ -29,7 +29,7 @@ return array(
             'userClass' => 'TblUser', // the name of the user model class.
             'userIdColumn' => 'uid', // the name of the user id column.
             'userNameColumn' => 'name', // the name of the user name column.
-            'defaultLayout' => 'webroot.themes.booster.views.layouts.main', // the layout used by the module.
+            'defaultLayout' => 'webroot.themes.booster.views.layouts.clean', // the layout used by the module.
             'viewDir' => null, // the path to view files to use with this module.
         ),
 	),

@@ -48,8 +48,9 @@ echo $form->dropDownListGroup($model, 'belong_plat',array(
     )
 ));
 echo $form->textFieldGroup($model, 'plat_name');
-echo $form->textFieldGroup($model, 'server_id');
+echo $form->textFieldGroup($model, 'plat_id');
 echo $form->textFieldGroup($model, 'server_name');
+echo $form->textFieldGroup($model, 'server_id');
 echo $form->textFieldGroup($model, 'mysql_ip');
 echo $form->textFieldGroup($model, 'mysql_account');
 echo $form->textFieldGroup($model, 'mysql_password');

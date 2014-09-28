@@ -1,6 +1,29 @@
 <?php
 $gridColumns = array(
-    'id',
+    array(
+        'name'=>'belong_plat',
+        'class' => 'booster.widgets.TbEditableColumn',
+        'headerHtmlOptions' => array('style' => 'width:200px'),
+        'editable' => array(
+            'type' => 'select',
+            'title'=> '修改平台',
+            'url' => '/platform/editable',
+            'source'=> array(
+                'ios'=>'ios',
+                'android'=>'android'
+            )
+        )
+    ),
+    array(
+        'name'=>'plat_id',
+        'class' => 'booster.widgets.TbEditableColumn',
+        'headerHtmlOptions' => array('style' => 'width:200px'),
+        'editable' => array(
+            'type' => 'text',
+            'title'=> '输入新id',
+            'url' => '/platform/editable',
+        )
+    ),
     array(
         'name'=>'belong_plat',
         'class' => 'booster.widgets.TbEditableColumn',
@@ -30,7 +53,7 @@ $gridColumns = array(
         'headerHtmlOptions' => array('style' => 'width:200px'),
         'editable' => array(
             'type' => 'text',
-            'title'=> '输入新名称',
+            'title'=> '输入新id',
             'url' => '/platform/editable',
         )
     ),
@@ -50,7 +73,7 @@ $gridColumns = array(
         'headerHtmlOptions' => array('style' => 'width:200px'),
         'editable' => array(
             'type' => 'text',
-            'title'=> '输入新名称',
+            'title'=> '输入新ip',
             'url' => '/platform/editable',
         )
     ),
@@ -70,7 +93,7 @@ $gridColumns = array(
         'headerHtmlOptions' => array('style' => 'width:200px'),
         'editable' => array(
             'type' => 'text',
-            'title'=> '输入新名称',
+            'title'=> '输入新密码',
             'url' => '/platform/editable',
         )
     ),
@@ -86,6 +109,7 @@ $gridColumns = array(
     ),
     array(
         'name'=>'create_time',
+        'htmlOptions' => array('nowrap'=>'nowrap'),
         'value'=>'date("Y-m-d H:i",$data->create_time)'
     ),
 );
