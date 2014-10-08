@@ -44,10 +44,10 @@ class TblPRoleBase extends PlatformActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'role_id' => '玩家id',
+			'role_id' => '角色id',
 			'account_name' => '账号名称',
 			'role_name' => '玩家名字',
-			'agent_id' => '服务器代理id',
+			'agent_id' => '平台id',
 			'server_id' => '服务器id',
 			'icon' => '玩家头像图标id',
 			'reg_mac' => '注册机型',

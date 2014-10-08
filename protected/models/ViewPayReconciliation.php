@@ -1,27 +1,14 @@
 <?php
 
-/**
- * This is the model class for table "base_pay".
- *
- * The followings are the available columns in table 'base_pay':
- * @property string $order_number
- * @property integer $agent_id
- * @property integer $server_id
- * @property integer $role_id
- * @property integer $level
- * @property integer $rmb
- * @property integer $gold
- * @property integer $get
- * @property integer $ctime
- */
-class TblBasePay extends PlatformActiveRecord
+
+class ViewPayReconciliation extends PlatformActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'base_pay';
+		return 'view_pay_reconciliation';
 	}
 
 	/**
@@ -32,11 +19,12 @@ class TblBasePay extends PlatformActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('agent_id, server_id, role_id, level, rmb, gold, get, ctime', 'numerical', 'integerOnly'=>true),
+			array('agent_id, server_id, role_id, level, rmb, ctime', 'numerical', 'integerOnly'=>true),
+			array('account_name, role_name', 'length', 'max'=>500),
 			array('order_number', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('order_number, agent_id, server_id, role_id, level, rmb, gold, get, ctime', 'safe', 'on'=>'search'),
+			array('agent_id, server_id, account_name, role_id, role_name, level, rmb, order_number, ctime', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -57,14 +45,14 @@ class TblBasePay extends PlatformActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'order_number' => '订单号',
 			'agent_id' => '代理id',
 			'server_id' => '服id',
+			'account_name' => '账号名称',
 			'role_id' => '角色id',
-			'level' => '等级',
+			'role_name' => '玩家名称',
+			'level' => '玩家等级',
 			'rmb' => '充值金额',
-			'gold' => '等值钻石',
-			'get' => '是否获得',
+			'order_number' => '订单号',
 			'ctime' => '时间',
 		);
 	}
@@ -87,14 +75,14 @@ class TblBasePay extends PlatformActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('order_number',$this->order_number,true);
 		$criteria->compare('agent_id',$this->agent_id);
 		$criteria->compare('server_id',$this->server_id);
+		$criteria->compare('account_name',$this->account_name,true);
 		$criteria->compare('role_id',$this->role_id);
+		$criteria->compare('role_name',$this->role_name,true);
 		$criteria->compare('level',$this->level);
 		$criteria->compare('rmb',$this->rmb);
-		$criteria->compare('gold',$this->gold);
-		$criteria->compare('get',$this->get);
+		$criteria->compare('order_number',$this->order_number,true);
 		$criteria->compare('ctime',$this->ctime);
 
 		return new CActiveDataProvider($this, array(
@@ -106,7 +94,7 @@ class TblBasePay extends PlatformActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return TblBasePay the static model class
+	 * @return ViewPayReconciliation the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

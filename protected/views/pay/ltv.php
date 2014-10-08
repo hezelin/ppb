@@ -1,14 +1,12 @@
-<?php
-/* @var $this PayController */
+<h1>☆LTV</h1>
+<pre>
 
-$this->breadcrumbs=array(
-	'Pay'=>array('/pay'),
-	'Ltv',
-);
-?>
-<h1><?php echo $this->id . '/' . $this->action->id; ?></h1>
+可以导出数据
+可选择平台：iOS或安卓
+可选择各渠道，如：91、360、小米、UC、PP、iTools 等
+可筛选（按开始日期-结束日期做区间）
+横向（日期，注册，LTV1，LTV2，LTV3，LTV4，LTV5，LTV6，LTV7，LTV15，LTV30，LTV60，LTV90，LTV120，LTV150，LTV180）
+纵向（在日期一列最下面添加两项：平均，汇总）
+LTV诠释：第N天新增的用户数，在后续1天内、2天内……7天内、15天内、30天内、60天内、90天内……的充值金额总数/第N天新增的用户数
 
-<p>
-	You may change the content of this page by modifying
-	the file <tt><?php echo __FILE__; ?></tt>.
-</p>
+</pre>

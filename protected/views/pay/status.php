@@ -1,14 +1,11 @@
-<?php
-/* @var $this PayController */
+<h3>☆充值情况总览</h3>
+<pre>
 
-$this->breadcrumbs=array(
-	'Pay'=>array('/pay'),
-	'Status',
-);
-?>
-<h1><?php echo $this->id . '/' . $this->action->id; ?></h1>
+可以导出数据
+可选择平台：iOS或安卓
+可选择各渠道，如：91、360、小米、UC、PP、iTools 等
+可筛选（按开始日期-结束日期做区间）
+横向（日期，注册，活跃，付费率，注册付费率，ARPPU，注册ARPU，充值次数，充值人数，新增充值人数，注册充值人数，注册充值金额，新增充值金额，充值金额）
+纵向（在日期一列最下面添加两项：平均，汇总）
 
-<p>
-	You may change the content of this page by modifying
-	the file <tt><?php echo __FILE__; ?></tt>.
-</p>
+</pre>
