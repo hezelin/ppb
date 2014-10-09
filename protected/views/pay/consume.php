@@ -39,22 +39,23 @@ $gridColumns = array(
         'name' => 'rank',
         'value'=>'$row+1',
     ),
-    'pay_money',
-    'pay_times',
+    'consume_gold',
+    'consume_silver',
+    'consume_times',
     'account_name',
     'role_id',
     'role_name',
     'gold',
     'silver',
     array(
-        'name'=>'first_pay_time',
+        'name'=>'first_consume_time',
         'htmlOptions' => array('nowrap'=>'nowrap'),
-        'value'=>'date("Y-m-d H:i",$data->first_pay_time)'
+        'value'=>'date("Y-m-d H:i",$data->first_consume_time)'
     ),
     array(
-        'name'=>'last_pay_time',
+        'name'=>'last_consume_time',
         'htmlOptions' => array('nowrap'=>'nowrap'),
-        'value'=>'date("Y-m-d H:i",$data->last_pay_time)'
+        'value'=>'date("Y-m-d H:i",$data->last_consume_time)'
     ),
     array(
         'name'=>'register_time',

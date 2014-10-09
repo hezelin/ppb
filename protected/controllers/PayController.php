@@ -71,8 +71,31 @@ class PayController extends Controller
 
 	public function actionRanking()
 	{
-		$this->render('ranking');
+        $model = new CActiveDataProvider('ViewPayRanking',array(
+            /*'criteria'=>array(
+                'condition'=>$where,
+            ),
+            'totalItemCount'=>$page['count'],*/
+            'pagination'=>array(
+                'pageSize'=>15,
+            ),
+        ));
+		$this->render('ranking',array('model'=>$model));
 	}
+
+    public function actionConsume()
+    {
+        $model = new CActiveDataProvider('ViewConsumeRanking',array(
+            /*'criteria'=>array(
+                'condition'=>$where,
+            ),
+            'totalItemCount'=>$page['count'],*/
+            'pagination'=>array(
+                'pageSize'=>15,
+            ),
+        ));
+        $this->render('consume',array('model'=>$model));
+    }
 
 	public function actionStatistics()
 	{
