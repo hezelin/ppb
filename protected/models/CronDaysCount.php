@@ -1,6 +1,24 @@
 <?php
 
-
+/**
+ * This is the model class for table "cron_days_count".
+ *
+ * The followings are the available columns in table 'cron_days_count':
+ * @property string $id
+ * @property string $date
+ * @property string $agent_id
+ * @property string $server_id
+ * @property double $pay_money
+ * @property string $pay_times
+ * @property string $pay_num
+ * @property double $reg_pay_money
+ * @property string $reg_pay_num
+ * @property string $reg_num
+ * @property string $login_num
+ * @property string $login_times
+ * @property string $first_pay_money
+ * @property string $first_pay_num
+ */
 class CronDaysCount extends CActiveRecord
 {
 	/**
@@ -24,7 +42,7 @@ class CronDaysCount extends CActiveRecord
 			array('agent_id, server_id, pay_times, pay_num, reg_pay_num, reg_num, login_num, login_times, first_pay_money, first_pay_num', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('date, agent_id, server_id, pay_money, pay_times, pay_num, reg_pay_money, reg_pay_num, reg_num, login_num, login_times, first_pay_money, first_pay_num', 'safe', 'on'=>'search'),
+			array('id, date, agent_id, server_id, pay_money, pay_times, pay_num, reg_pay_money, reg_pay_num, reg_num, login_num, login_times, first_pay_money, first_pay_num', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -45,6 +63,7 @@ class CronDaysCount extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
+			'id' => 'ID',
 			'date' => '日期',
 			'agent_id' => '平台id',
 			'server_id' => '服务id',
@@ -82,6 +101,7 @@ class CronDaysCount extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
+		$criteria->compare('id',$this->id,true);
 		$criteria->compare('date',$this->date,true);
 		$criteria->compare('agent_id',$this->agent_id,true);
 		$criteria->compare('server_id',$this->server_id,true);

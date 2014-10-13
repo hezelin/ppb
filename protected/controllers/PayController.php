@@ -97,9 +97,26 @@ class PayController extends Controller
         $this->render('consume',array('model'=>$model));
     }
 
+    /*
+     * 没有充值统计
+     */
 	public function actionStatistics()
 	{
-		$this->render('statistics');
+        $sql = "
+            select DATE_FORMAT(`date`,'%Y-%m') as month, sum(reg_num) as reg_num, sum(reg_pay_money) as reg_pay_money,
+                sum(login_num) as login_num, sum(pay_money) as pay_money, sum(pay_times) as pay_times, sum(pay_num) as pay_num
+            from cron_days_count
+            group by month
+        ";
+
+        $model = new CSqlDataProvider($sql,array(
+            'keyField'=>'month',
+            'pagination'=>array(
+                'pageSize'=>15,
+            ),
+        ));
+
+        $this->render('statistics',array('dataProvider'=>$model) );
 	}
 
 	public function actionStatus()
@@ -115,31 +132,4 @@ class PayController extends Controller
         ));
 		$this->render('status',array('model'=>$model));
 	}
-
-	// Uncomment the following methods and override them if needed
-	/*
-	public function filters()
-	{
-		// return the filter configuration for this controller, e.g.:
-		return array(
-			'inlineFilterName',
-			array(
-				'class'=>'path.to.FilterClass',
-				'propertyName'=>'propertyValue',
-			),
-		);
-	}
-
-	public function actions()
-	{
-		// return external action classes, e.g.:
-		return array(
-			'action1'=>'path.to.ActionClass',
-			'action2'=>array(
-				'class'=>'path.to.AnotherActionClass',
-				'propertyName'=>'propertyValue',
-			),
-		);
-	}
-	*/
 }
