@@ -43,7 +43,7 @@ $form = $this->beginWidget(
 echo $form->textFieldGroup($model, 'id');
 echo $form->textFieldGroup($model, 'total');
 echo $form->textFieldGroup($model, 'tips');
-echo '<div class="row">';
+echo '<div class="row" style="padding-left: 20px">';
 $this->widget(
     'booster.widgets.TbButton',
     array(

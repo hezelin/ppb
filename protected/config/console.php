@@ -11,19 +11,17 @@ return array(
 
 	// application components
 	'components'=>array(
-		'db'=>array(
-			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
-		),
-		// uncomment the following to use a MySQL database
-		/*
-		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=testdrive',
-			'emulatePrepare' => true,
-			'username' => 'root',
-			'password' => '',
-			'charset' => 'utf8',
-		),
-		*/
+
+        'db'=>array(
+            'connectionString' => 'mysql:host=localhost;dbname=ppb_base',
+            'emulatePrepare' => true,
+            'username' => 'root',
+            'password' => 'guoan2',
+            'charset' => 'utf8',
+        ),
+
+        'db2'=> require(__DIR__.'/platformDbConfig.php'),
+
 		'log'=>array(
 			'class'=>'CLogRouter',
 			'routes'=>array(

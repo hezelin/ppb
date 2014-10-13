@@ -9,3 +9,63 @@
 纵向（在日期一列最下面添加两项：平均，汇总）
 
 </pre>
+
+<?php
+//$row 行数
+
+/*
+ * 返回比例，保留2位精度
+ */
+function fm($a,$b)
+{
+    if(!$b) return '0.00';
+    return number_format($a/ $b,2);
+//    return round($a/$b,2);
+}
+
+$gridColumns = array(
+
+    'date',
+    'agent_id',
+    'server_id',
+    'reg_num',
+    'login_times',
+    'login_num',
+    'pay_times',
+    'pay_num',
+    'pay_money',
+    'first_pay_num',
+    'first_pay_money',
+    'reg_pay_num',
+    'reg_pay_money',
+    array(
+        'name'=>'pay_ratio',
+        'htmlOptions' => array('nowrap'=>'nowrap'),
+        'value'=>'fm($data->pay_num,$data->login_num)',
+    ),
+    array(
+        'name'=>'reg_pay_ratio',
+        'htmlOptions' => array('nowrap'=>'nowrap'),
+        'value'=>'fm($data->reg_pay_num,$data->reg_num)'
+    ),
+    array(
+        'name'=>'arppu',
+        'htmlOptions' => array('nowrap'=>'nowrap'),
+        'value'=>'fm($data->pay_money,$data->pay_num)'
+    ),
+    array(
+        'name'=>'arpu',
+        'htmlOptions' => array('nowrap'=>'nowrap'),
+        'value'=>'fm($data->reg_pay_money,$data->reg_num)'
+    ),
+);
+
+$this->widget('booster.widgets.TbGridView',array(
+        'type' => 'striped',
+        'dataProvider' => $model,
+        'template' => "{summary}\n{items}\n{pager}",
+//        'filter' => $model,
+        'columns' => $gridColumns,
+    )
+);
+?>

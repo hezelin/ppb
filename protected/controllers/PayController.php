@@ -104,7 +104,16 @@ class PayController extends Controller
 
 	public function actionStatus()
 	{
-		$this->render('status');
+        $model = new CActiveDataProvider('CronDaysCount',array(
+            /*'criteria'=>array(
+                'condition'=>$where,
+            ),
+            'totalItemCount'=>$page['count'],*/
+            'pagination'=>array(
+                'pageSize'=>15,
+            ),
+        ));
+		$this->render('status',array('model'=>$model));
 	}
 
 	// Uncomment the following methods and override them if needed

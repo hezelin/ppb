@@ -46,6 +46,7 @@ class ViewConsumeRanking extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
+            'rank' => '排名',
 			'consume_gold' => '消费元宝',
 			'consume_silver' => '消费银两',
 			'consume_times' => '消费次数',

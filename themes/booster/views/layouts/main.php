@@ -23,8 +23,22 @@ $this->widget(
                 'class' => 'booster.widgets.TbMenu',
                 'type' => 'navbar',
                 'items' => array(
-                    array('label'=>'Home', 'url'=>array('/site/index')),
-                    array('label' => '激活码','url'=>array('/activation/index')),
+                    array('label'=>'首页', 'url'=>array('/site/index')),
+                    array(
+                        'label' => '激活码操作',
+                        'items' => array(
+                            array('label' => '激活码创建', 'url' => '/activation/index'),
+                            array('label' => '激活码列表', 'url' => '/activation/list'),
+                            array('label' => '激活码接口', 'url' => '/activation/port'),
+                        )
+                    ),
+                    array(
+                        'label' => '服务器操作',
+                        'items' => array(
+                            array('label' => '添加服务器', 'url' => '/platform/index'),
+                            array('label' => '服务器列表', 'url' => '/platform/list'),
+                        )
+                    ),
                 )
             ),
             array(
@@ -53,15 +67,6 @@ $this->widget(
         array(
             'type' => 'list',
             'items' => array(
-                array('label' => '激活码操作'),
-                array('label' => '激活码创建', 'url' => '/activation/index'),
-                array('label' => '激活码列表', 'url' => '/activation/list'),
-                array('label' => '激活码接口', 'url' => '/activation/port'),
-                '',
-                array('label' => '服务器操作'),
-                array('label' => '添加服务器', 'url' => '/platform/index'),
-                array('label' => '服务器列表', 'url' => '/platform/list'),
-                '',
                 array('label' => '充值与消费'),
                 array('label' => '对账管理', 'url' => '/pay/index'),
                 array('label' => '充值排行', 'url' => '/pay/ranking'),

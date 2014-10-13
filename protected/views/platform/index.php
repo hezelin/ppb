@@ -56,7 +56,7 @@ echo $form->textFieldGroup($model, 'mysql_account');
 echo $form->textFieldGroup($model, 'mysql_password');
 echo $form->textFieldGroup($model, 'mysql_dbname');
 
-echo '<div class="row">';
+echo '<div class="row" style="padding-left: 20px">';
 $this->widget(
     'booster.widgets.TbButton',
     array(
