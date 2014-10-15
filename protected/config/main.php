@@ -44,7 +44,6 @@ return array(
             'admins' => array('admin', 'foo', 'bar'), // users with full access
 		),
 		// uncomment the following to enable URLs in path-format
-
 		'urlManager'=>array(
 			'urlFormat'=>'path',
             'showScriptName'=>false,
@@ -55,6 +54,9 @@ return array(
 			),
 		),
 
+        'curl'=>array(
+            'class'=>'ext.curl.Curl',
+        ),
         'booster'=>array(
             'class'=>'bootstrap3.components.Booster',
         ),

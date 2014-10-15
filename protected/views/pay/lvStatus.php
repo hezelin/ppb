@@ -10,3 +10,30 @@
 等级充值情况做成图表形式（横坐标为等级，纵坐标为数量，充值人数和充值金额两条线）
 
 </pre>
+<?php
+$gridColumns = array(
+
+    array(
+        'name'=>'level',
+        'header' => '等级',
+    ),
+    'agent_id',
+    'server_id',
+    array(
+        'name'=>'pay_num',
+        'header' => '充值次数',
+    ),
+    array(
+        'name'=>'pay_money',
+        'header' => '充值金额',
+    ),
+);
+
+$this->widget('booster.widgets.TbGridView',array(
+        'type' => 'striped',
+        'dataProvider' => $model,
+        'template' => "{summary}\n{items}\n{pager}",
+//        'filter' => $model,
+        'columns' => $gridColumns,
+    )
+);

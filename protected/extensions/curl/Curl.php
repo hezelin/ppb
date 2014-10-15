@@ -3,7 +3,7 @@
  * Curl wrapper PHP v2
  * @author hackerone
  */
-class Curl
+class Curl extends CComponent
 {
     private $_ch;
     private $response;

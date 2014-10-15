@@ -61,12 +61,28 @@ class PayController extends Controller
 
 	public function actionLtv()
 	{
+
 		$this->render('ltv');
 	}
 
 	public function actionLvStatus()
 	{
-		$this->render('lvStatus');
+        $sql = "
+            select `level`,agent_id,server_id, count(distinct role_id) as pay_num, sum(rmb) as pay_money
+            from base_pay
+            group by level
+        ";
+
+        $count = Yii::app()->db->createCommand('select count(distinct level) from base_pay')->queryScalar();
+        $model = new CSqlDataProvider($sql,array(
+            'keyField'=>'level',
+            'totalItemCount'=>$count,
+            'pagination'=>array(
+                'pageSize'=>15,
+            ),
+        ));
+
+		$this->render('lvStatus',array('model'=>$model));
 	}
 
 	public function actionRanking()
@@ -108,9 +124,10 @@ class PayController extends Controller
             from cron_days_count
             group by month
         ";
-
+        $count = Yii::app()->db->createCommand("select count(distinct DATE_FORMAT(`date`,'%Y-%m') ) from cron_days_count")->queryScalar();
         $model = new CSqlDataProvider($sql,array(
             'keyField'=>'month',
+            'totalItemCount'=>$count,
             'pagination'=>array(
                 'pageSize'=>15,
             ),
