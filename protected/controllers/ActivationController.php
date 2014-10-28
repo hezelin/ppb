@@ -53,7 +53,6 @@ class ActivationController extends Controller
     {
         if( $r = Yii::app()->getRequest() )
         {
-
             $model = TblActivationTotal::model()->findByPk($r->getParam('pk'));
             $name = $r->getParam('name');
             $model->$name = $r->getParam('value');

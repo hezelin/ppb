@@ -1,14 +1,11 @@
-<?php
-/* @var $this PlayerController */
+<pre>
+    ☆物品流通查询
+可以导出数据
+可筛选（按开始日期-结束日期做区间，输入账号/ID/角色名查询，可选择所有/获得/失去，可选择所有物品装备和资源货币类型，可手动输入，可选择所有操作类型，可手动输入）
+（角色ID，角色ID2，操作内容，物品资源，状态，操作时间，操作ID）
+状态：获得/失去
+操作ID：记录日志的ID
+注：角色ID默认为当前查询的ID，角色ID2默认为0，即系统，
+如果游戏内可玩家互通邮件及附件，那角色ID即为发件人ID，角色ID2为收件人ID
 
-$this->breadcrumbs=array(
-	'Player'=>array('/player'),
-	'Good',
-);
-?>
-<h1><?php echo $this->id . '/' . $this->action->id; ?></h1>
-
-<p>
-	You may change the content of this page by modifying
-	the file <tt><?php echo __FILE__; ?></tt>.
-</p>
+</pre>

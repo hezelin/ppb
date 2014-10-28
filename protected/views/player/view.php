@@ -1,0 +1,41 @@
+<h3>玩家信息详情</h3>
+<?php
+$this->widget(
+    'booster.widgets.TbDetailView',
+    array(
+        'data'=>$model,
+        'attributes' => array(
+            'role_id',
+            'account_name',
+            'role_name',
+            'agent_id',
+            'server_id',
+            'icon',
+            'reg_mac',
+            array(
+                'name'=>'reg_date',
+                'value'=>date("Y-m-d H:i",$model->reg_date),
+            ),
+            array(
+                'name'=>'last_login_time',
+                'value'=>date("Y-m-d H:i",$model->last_login_time)
+            ),
+            'last_login_mac',
+            'acc_gold_use',
+            'last_up_date',
+            'silver',
+            'gold',
+            'vip_level',
+            'cur_tili',
+            'max_tili',
+            'add_money_time',
+            'add_money_last_time',
+            'buy_tili_time',
+            'buy_tili_last_time',
+            'level',
+            'exp',
+            'friendship',
+            'month_vip',
+        ),
+    )
+);

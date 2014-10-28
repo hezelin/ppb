@@ -1,14 +1,12 @@
-<?php
-/* @var $this AnalysisController */
+<pre>
+    ☆等级留存
+可以导出数据
+可选择平台：iOS或安卓
+可选择各渠道，如：91、360、小米、UC、PP、iTools 等
+可筛选（按开始日期-结束日期做区间，显示结果为区间内汇总数据）
+（新增注册，等级，等级人数，占比）
+ 做成图表形式（横坐标为等级，纵坐标为数量&百分比，显示等级人数和占比两条线）
 
-$this->breadcrumbs=array(
-	'Analysis'=>array('/analysis'),
-	'LvRemain',
-);
-?>
-<h1><?php echo $this->id . '/' . $this->action->id; ?></h1>
+</pre>
 
-<p>
-	You may change the content of this page by modifying
-	the file <tt><?php echo __FILE__; ?></tt>.
-</p>
+<h1 style="color: #ff0000">没有等级变化的记录表</h1>

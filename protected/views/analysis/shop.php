@@ -1,14 +1,11 @@
-<?php
-/* @var $this AnalysisController */
+<pre>
+    ☆商城消耗统计
+可以导出数据
+可选择平台：iOS或安卓
+可选择各渠道，如：91、360、小米、UC、PP、iTools 等
+可筛选（按开始日期-结束日期做区间，可选择商城内所有单项道具和全部）
+商城总消费（服务器内通过商城消费的总额）
+区间消费额（筛选日期区间内、选择的商城某道具的消费总额，筛选日期区间内、商城所有道具的消费总额）
+（物品ID，物品名称，单价，销量，销售次数，销售人数，消费元宝，消费元宝占比）
 
-$this->breadcrumbs=array(
-	'Analysis'=>array('/analysis'),
-	'Shop',
-);
-?>
-<h1><?php echo $this->id . '/' . $this->action->id; ?></h1>
-
-<p>
-	You may change the content of this page by modifying
-	the file <tt><?php echo __FILE__; ?></tt>.
-</p>
+</pre>

@@ -96,9 +96,10 @@ class ToolBase {
         $isCut = false;
         if( $data[0] > 236 && ( $data[1] - $data[0]*3) >0 ){
 
-            // 判断高与款的比例,压缩的高度随机为 520,540,580,620,680
+            // 缩略图 宽236px,高度当> 700 的时候，随机剪切为 520,540,580,620,680
+            $rand = array(520,540,580,620,680);
             $width = 236;
-            $height = array_rand(array(520,540,580,620,680));
+            $height = $rand[array_rand($rand)];
             $isCut = true;
 
         }
@@ -115,7 +116,6 @@ class ToolBase {
             $height=$data[1];
         }
 
-
         switch($data[2]){
             case 1:
                 $im=@imagecreatefromgif($srcFile);
@@ -130,11 +130,6 @@ class ToolBase {
         $srcW=@imagesx($im);
         if($isCut) $srcH = $srcW*$height/$width;
         else $srcH=@imagesy($im);
-
-        echo '$width = ',$width,'<br/>';
-        echo '$height = ',$height,'<br/>';
-        echo '$srcW = ',$srcW,'<br/>';
-        echo '$srcH = ',$srcH,'<br/>';
 
         $ni=@imagecreatetruecolor($width,$height);
         @imagecopyresampled($ni,$im,0,0,0,0,$width,$height,$srcW,$srcH);

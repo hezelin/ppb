@@ -14,7 +14,8 @@ VIP详情
 （账号，ID，角色名，职业，VIP等级，游戏等级，战斗力，消费元宝，充值元宝，最后充值时间，最后消费时间，最后登录时间）
 
 </pre>
-
+<div style="color: #ff0000">VIP等级，VIP人数，占比，游戏等级，3天以上未登录，7天以上未登录，15天以上未登录，30天以上未登录）
+    <br/>应该是 3天内登录吧</div>
 <?php
 
 $this->widget(
@@ -25,38 +26,51 @@ $this->widget(
             array(
                 'label' => 'VIP 等级查询',
                 'content' => '',
-                'active' => true
+                'url'=>'vip',
             ),
             array(
                 'label' => 'VIP 等级统计',
                 'content' => '',
-                'url'=>'vipLevel',
+                'active' => true
             ),
         ),
     )
 );
 
-?>
-
-<?php
 $gridColumns = array(
-    'role_id',
-    'role_name',
-    'account_name',
-    'vip_level',
-    'silver',
-    'gold',
-    'reg_date',
-    'last_login_time',
-
-);
-
-$this->widget('booster.widgets.TbGridView',array(
-        'type' => 'striped',
-        'dataProvider' => $model,
-        'template' => "{summary}\n{items}\n{pager}",
-//        'filter' => $model,
-        'columns' => $gridColumns,
+    array(
+        'name'=>'vip',
+        'header'=>'VIP等级'
+    ),
+    array(
+        'name'=>'vip_num',
+        'header'=>'VIP人数'
+    ),
+    array(
+        'name'=>'agent_id',
+        'header'=>'平台'
+    ),
+    array(
+        'name'=>'3days',
+        'header'=>'3天内登录'
+    ),
+    array(
+        'name'=>'7days',
+        'header'=>'7天内登录'
+    ),
+    array(
+        'name'=>'15days',
+        'header'=>'15天内登录'
+    ),
+    array(
+        'name'=>'30days',
+        'header'=>'30天内登录'
     )
 );
+$this->widget('booster.widgets.TbGridView', array(
+    'dataProvider'=>$dataProvider,
+    'type' => 'striped',
+    'columns' => $gridColumns,
+));
+
 ?>

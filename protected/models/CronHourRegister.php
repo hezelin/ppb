@@ -1,27 +1,23 @@
 <?php
 
 /**
- * This is the model class for table "base_pay".
+ * This is the model class for table "cron_hour_register".
  *
- * The followings are the available columns in table 'base_pay':
- * @property string $order_number
+ * The followings are the available columns in table 'cron_hour_register':
+ * @property string $date
+ * @property integer $hour
+ * @property string $role_num
+ * @property string $account_num
  * @property integer $agent_id
- * @property integer $server_id
- * @property integer $role_id
- * @property integer $level
- * @property integer $rmb
- * @property integer $gold
- * @property integer $get
- * @property integer $ctime
  */
-class TblBasePay extends CActiveRecord
+class CronHourRegister extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'base_pay';
+		return 'cron_hour_register';
 	}
 
 	/**
@@ -32,11 +28,12 @@ class TblBasePay extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('agent_id, server_id, role_id, level, rmb, gold, get, ctime', 'numerical', 'integerOnly'=>true),
-			array('order_number', 'length', 'max'=>100),
+			array('date, hour', 'required'),
+			array('hour, agent_id', 'numerical', 'integerOnly'=>true),
+			array('role_num, account_num', 'length', 'max'=>11),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('order_number, agent_id, server_id, role_id, level, rmb, gold, get, ctime', 'safe', 'on'=>'search'),
+			array('date, hour, role_num, account_num, agent_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -57,15 +54,11 @@ class TblBasePay extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'order_number' => '订单号',
-			'agent_id' => '代理id',
-			'server_id' => '服id',
-			'role_id' => '角色id',
-			'level' => '等级',
-			'rmb' => '充值金额',
-			'gold' => '等值钻石',
-			'get' => '是否获得',
-			'ctime' => '时间',
+			'date' => '日期',
+			'hour' => '小时',
+			'role_num' => '角色数',
+			'account_num' => '账号数',
+			'agent_id' => '平台id',
 		);
 	}
 
@@ -87,15 +80,11 @@ class TblBasePay extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('order_number',$this->order_number,true);
+		$criteria->compare('date',$this->date,true);
+		$criteria->compare('hour',$this->hour);
+		$criteria->compare('role_num',$this->role_num,true);
+		$criteria->compare('account_num',$this->account_num,true);
 		$criteria->compare('agent_id',$this->agent_id);
-		$criteria->compare('server_id',$this->server_id);
-		$criteria->compare('role_id',$this->role_id);
-		$criteria->compare('level',$this->level);
-		$criteria->compare('rmb',$this->rmb);
-		$criteria->compare('gold',$this->gold);
-		$criteria->compare('get',$this->get);
-		$criteria->compare('ctime',$this->ctime);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -106,7 +95,7 @@ class TblBasePay extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return TblBasePay the static model class
+	 * @return CronHourRegister the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

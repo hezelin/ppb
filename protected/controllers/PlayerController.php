@@ -9,8 +9,21 @@ class PlayerController extends Controller
 
 	public function actionInfo()
 	{
-		$this->render('info');
+        $model=new TblPRoleBase('search');
+        $model->unsetAttributes();
+        if(isset($_GET['TblPRoleBase'])){
+            $model->attributes=$_GET['TblPRoleBase'];
+        }
+		$this->render('info',array('model'=>$model));
 	}
+    /*
+     * 玩家详情
+     */
+    public function actionView($id)
+    {
+        $model = TblPRoleBase::model()->findByPk($id);
+        $this->render('view',array('model'=>$model));
+    }
 
 	public function actionMail()
 	{
