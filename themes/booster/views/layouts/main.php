@@ -23,7 +23,7 @@ $this->widget(
                 'class' => 'booster.widgets.TbMenu',
                 'type' => 'navbar',
                 'items' => array(
-                    array('label'=>'首页', 'url'=>array('/site/index')),
+                    array('label'=>'首页', 'url'=>array('/pay/index')),
                     array(
                         'label' => '激活码操作',
                         'items' => array(
@@ -39,6 +39,15 @@ $this->widget(
                             array('label' => '服务器列表', 'url' => '/platform/list'),
                         )
                     ),
+                    array(
+                        'label' => '权限管理',
+                        'items' => array(
+                            array('label'=>'授权','url'=>'/auth/assignment/index'),
+                            array('label'=>'角色','url'=>'/auth/role/index'),
+                            array('label'=>'任务','url'=>'/auth/task/index'),
+                            array('label'=>'操作','url'=>'/auth/operation/index'),
+                        )
+                    )
                 )
             ),
             array(

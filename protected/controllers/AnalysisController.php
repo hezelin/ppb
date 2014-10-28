@@ -25,9 +25,42 @@ class AnalysisController extends Controller
 		$this->render('index',array('model'=>$model));
 	}
 
+    /*
+     * 等级留存
+     */
 	public function actionLvRemain()
 	{
-		$this->render('lvRemain');
+
+        $day1 = strtotime('2014-10-27');
+        $day2 = $day1 + 86399*2-1;
+        $model = Yii::app()->db->createCommand()
+            ->select('id,level,count(distinct role_id) as level_num')
+            ->from('log_level_up')
+            ->where('ctime between :day1 and :day2',array(':day1'=>$day1,':day2'=>$day2))
+            ->andWhere('server_id=1')
+            ->group('level,agent_id')
+            ->queryAll();
+        $total = array_sum( array_column($model,'level_num'));
+
+        $regData = $remData1 = $cate = array();             // chart 表
+
+        foreach($model as &$r)
+        {
+            $r['ratio'] = number_format( $r['level_num']/$total,2);
+            //chart 表
+            $regData[] = (int)$r['level_num'];
+            $remData1[] = $r['ratio']*100;
+            $cate[] = $r['level'];
+        }
+
+        // chart 表
+        $data[0]['name'] = '等级人数';
+        $data[1]['name'] = '占比';
+        $data[0]['data'] = $regData;
+        $data[1]['data'] = $remData1;
+
+        $dataProvider = new CArrayDataProvider($model);
+		$this->render('lvRemain',array('dataProvider'=>$dataProvider,'cate'=>$cate,'data'=>$data));
 	}
 
 	public function actionOnline()

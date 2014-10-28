@@ -72,5 +72,3 @@ $this->widget('booster.widgets.TbGridView', array(
     'type' => 'striped',
     'columns' => $gridColumns,
 ));
-
-?>
