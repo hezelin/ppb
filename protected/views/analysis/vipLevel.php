@@ -14,28 +14,22 @@ VIP详情
 （账号，ID，角色名，职业，VIP等级，游戏等级，战斗力，消费元宝，充值元宝，最后充值时间，最后消费时间，最后登录时间）
 
 </pre>
+
+
+<div class="row">
+    <ul class="nav nav-tabs">
+        <li>
+            <a href="vip">VIP 等级查询</a></li>
+        <li class="active">
+            <a href="javascript:void(0)">VIP 等级统计</a>
+        </li>
+    </ul>
+</div>
+
 <div style="color: #ff0000">VIP等级，VIP人数，占比，游戏等级，3天以上未登录，7天以上未登录，15天以上未登录，30天以上未登录）
     <br/>应该是 3天内登录吧</div>
-<?php
 
-$this->widget(
-    'booster.widgets.TbTabs',
-    array(
-        'type' => 'tabs', // 'tabs' or 'pills'
-        'tabs' => array(
-            array(
-                'label' => 'VIP 等级查询',
-                'content' => '',
-                'url'=>'vip',
-            ),
-            array(
-                'label' => 'VIP 等级统计',
-                'content' => '',
-                'active' => true
-            ),
-        ),
-    )
-);
+<?php
 
 $gridColumns = array(
     array(

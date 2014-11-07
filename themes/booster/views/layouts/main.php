@@ -33,10 +33,10 @@ $this->widget(
                         )
                     ),
                     array(
-                        'label' => '服务器操作',
+                        'label' => '平台操作',
                         'items' => array(
-                            array('label' => '添加服务器', 'url' => '/platform/index'),
-                            array('label' => '服务器列表', 'url' => '/platform/list'),
+                            array('label' => '添加平台', 'url' => '/platform/index'),
+                            array('label' => '平台列表', 'url' => '/platform/list'),
                         )
                     ),
                     array(
@@ -46,6 +46,14 @@ $this->widget(
                             array('label'=>'角色','url'=>'/auth/role/index'),
                             array('label'=>'任务','url'=>'/auth/task/index'),
                             array('label'=>'操作','url'=>'/auth/operation/index'),
+                        )
+                    ),
+                    array(
+                        'label' => '服务器操作',
+                        'items' => array(
+                            array('label'=>'添加服务器','url'=>'/server/create'),
+                            array('label'=>'服务器列表','url'=>'/server/list'),
+                            array('label'=>'接口说明','url'=>'/server/port'),
                         )
                     )
                 )

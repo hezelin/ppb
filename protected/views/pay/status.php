@@ -19,7 +19,7 @@
 function fm($a,$b)
 {
     if(!$b) return '0.00';
-    return number_format($a/ $b,2);
+    return number_format($a/ $b,2,'.','');
 //    return round($a/$b,2);
 }
 

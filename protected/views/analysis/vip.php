@@ -15,28 +15,16 @@ VIP详情
 
 </pre>
 
-<?php
+<div class="row">
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a href="javascript:void(0)">VIP 等级查询</a></li>
+        <li>
+            <a href="vipLevel">VIP 等级统计</a>
+        </li>
+    </ul>
+</div>
 
-$this->widget(
-    'booster.widgets.TbTabs',
-    array(
-        'type' => 'tabs', // 'tabs' or 'pills'
-        'tabs' => array(
-            array(
-                'label' => 'VIP 等级查询',
-                'content' => '',
-                'active' => true
-            ),
-            array(
-                'label' => 'VIP 等级统计',
-                'content' => '',
-                'url'=>'vipLevel',
-            ),
-        ),
-    )
-);
-
-?>
 
 <?php
 $gridColumns = array(

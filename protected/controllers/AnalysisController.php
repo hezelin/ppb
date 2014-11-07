@@ -30,7 +30,6 @@ class AnalysisController extends Controller
      */
 	public function actionLvRemain()
 	{
-
         $day1 = strtotime('2014-10-27');
         $day2 = $day1 + 86399*2-1;
         $model = Yii::app()->db->createCommand()
@@ -63,10 +62,91 @@ class AnalysisController extends Controller
 		$this->render('lvRemain',array('dataProvider'=>$dataProvider,'cate'=>$cate,'data'=>$data));
 	}
 
-	public function actionOnline()
-	{
-		$this->render('online');
-	}
+    public function actionOnline()
+    {
+        if( isset($_GET['type']) && isset($_GET['type']) == 'history')
+        {
+            $day1 = strtotime('2014-10-20');
+            $day2 = strtotime('2014-11-20');
+
+            $model = Yii::app()->db->createCommand()
+                ->select('id,from_unixtime(`ctime`,\'%Y-%m-%d\') as `date`,max(num) as height_num,min(num) as lower_num,avg(num) as aver_num')
+                ->from('log_online_five')
+                ->where('`ctime` between :day1 and :day2',array(':day1'=>$day1,':day2'=>$day2))
+                ->andWhere('server_id=1')
+                ->group('date')
+                ->queryAll();
+
+//        $total = array_sum( array_column($model,'level_num'));
+
+            $data1 = $data2 = $data3 = $cate = array();             // chart 表
+            foreach($model as &$r)
+            {
+                $r['aver_num'] = (int)$r['aver_num'];
+                //chart 表
+                $data1[] = (int)$r['height_num'];
+                $data2[] = (int)$r['lower_num'];
+                $data3[] = $r['aver_num'];
+
+                $cate[] = $r['date'];
+            }
+
+            // chart 表
+            $data[0]['name'] = '最高在线';
+            $data[1]['name'] = '最低在线';
+            $data[2]['name'] = '平均在线';
+            $data[0]['data'] = $data1;
+            $data[1]['data'] = $data2;
+            $data[2]['data'] = $data3;
+
+            $dataProvider = new CArrayDataProvider($model);
+
+            $this->render('history',array('day1'=>$day1,'day2'=>$day2,'data'=>$data,'dataProvider'=>$dataProvider,'cate'=>$cate));
+        }
+        else
+        {
+            $day1 = '2014-10-20';
+            $day2 = '2014-11-19';
+            $dayStr1 = strtotime($day1);
+            $dayStr2 = strtotime($day2);
+            $data1 = $data2 = $cate = array();             // chart 表
+            $model1 = Yii::app()->db->createCommand()
+                ->select('ctime,sum(num) as online_num')
+                ->from('log_online_five')
+                ->where('`ctime` between :day1 and :day2',array(':day1'=>$dayStr1,':day2'=>$dayStr1+86399) )
+                ->group('ctime')
+                ->order('ctime asc')
+                ->queryAll();
+
+            $model2 = Yii::app()->db->createCommand()
+                ->select('ctime, sum(num) as online_num')
+                ->from('log_online_five')
+                ->where('`ctime` between :day1 and :day2',array(':day1'=>$dayStr2,':day2'=>$dayStr2+86399) )
+                ->group('ctime')
+                ->order('ctime asc')
+                ->queryAll();
+//            if($data1)
+            foreach($model1 as &$r)
+            {
+                $data1[] = (int)$r['online_num'];
+                $cate[] = date('H:i',$r['ctime']);
+            }
+            foreach($model2 as &$r)
+            {
+                $data2[] = (int)$r['online_num'];
+//                $cate[] = date('H:i',$r['time']);
+            }
+
+            // chart 表
+            $data[0]['name'] = $day1;
+            $data[1]['name'] = $day2;
+            $data[0]['data'] = $data1;
+            $data[1]['data'] = $data2;
+
+//            $dataProvider = new CArrayDataProvider($model);
+            $this->render('online',array('day1'=>$day1,'day2'=>$day2,'data'=>$data,'cate'=>$cate,'dayData'=>$this->getDay($dayStr1,$dayStr2)));
+        }
+    }
 
 	public function actionRunAway()
 	{
@@ -208,7 +288,7 @@ class AnalysisController extends Controller
             $remData1[] = (int)($r['new_num']*$r['day1']);
             /*$remData2[] = (int)($r['new_num']*$r['day2']);
             $remData3[] = (int)($r['new_num']*$r['day3']);*/
-            $cate[] = str_replace('-','',$r['date']);
+            $cate[] = str_replace('-','',substr($r['date'],5));
         }
         $data[0]['data'] = $regData;
         $data[1]['data'] = $remData1;
@@ -237,5 +317,47 @@ class AnalysisController extends Controller
             ->queryScalar();
         return $count;
 
+    }
+
+    //    获取最高
+    private function getDay($day1,$day2)
+    {
+        $day1 = (int)$day1;
+        $day11 = $day1 + 86399;
+        $day2 = (int)$day2;
+        $day22 = $day2 + 86399;
+
+        $sql1 = "select `ctime`, `num` from `log_online_five`
+                    where `num` = (select max(`num`) from `log_online_five` where `ctime` between $day1 and $day11 )
+                    and `ctime` between $day1 and $day11";
+
+        $sql2 = "select `ctime`, `num` from `log_online_five`
+                    where `num` = (select min(`num`) from `log_online_five` where `ctime` between $day1 and $day11)
+                    and `ctime` between $day1 and $day11";
+
+        $sql3 = "select `ctime`, `num` from `log_online_five`
+                    where `num` = (select max(`num`) from `log_online_five` where `ctime` between $day2 and $day22 )
+                    and `ctime` between $day2 and $day22";
+
+        $sql4 = "select `ctime`, `num` from `log_online_five`
+                    where `num` = (select min(`num`) from `log_online_five` where `ctime` between $day2 and $day22 )
+                    and `ctime` between $day2 and $day22";
+
+        $a = Yii::app()->db->createCommand($sql1)->queryRow();
+        $b = Yii::app()->db->createCommand($sql2)->queryRow();
+        $c = Yii::app()->db->createCommand($sql3)->queryRow();
+        $d = Yii::app()->db->createCommand($sql4)->queryRow();
+
+        $data[ date('Y-m-d',$day1) ]['highest_num'] = $a['num'];
+        $data[ date('Y-m-d',$day1) ]['highest_time'] = date('H:i',$a['ctime']);
+        $data[ date('Y-m-d',$day1) ]['lowest_num'] = $b['num'];
+        $data[ date('Y-m-d',$day1) ]['lowest_time'] = date('H:i',$b['ctime']);
+
+        $data[ date('Y-m-d',$day2) ]['highest_num'] = $c['num'];
+        $data[ date('Y-m-d',$day2) ]['highest_time'] = date('H:i',$c['ctime']);
+        $data[ date('Y-m-d',$day2) ]['lowest_num'] = $d['num'];
+        $data[ date('Y-m-d',$day2) ]['lowest_time'] = date('H:i',$d['ctime']);
+
+        return $data;
     }
 }

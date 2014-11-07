@@ -8,7 +8,6 @@
  做成图表形式（横坐标为日期，纵坐标为数量&百分比，显示新增注册和第1日留存两条线）
 
 </pre>
-
 <?php
 $this->widget(
     'booster.widgets.TbHighCharts',
